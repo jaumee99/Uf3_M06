@@ -1,0 +1,32 @@
+<h1>Dades latitud </h1>
+
+<p>Minima</p>
+<input type="number" step="0.00001" id="latitudMin" [(ngModel)]="latitudMin" class="form-control" required>
+<p>Maxima</p>
+<input type="number" step="0.00001" id="latitudMax" [(ngModel)]="latitudMax" class="form-control" required>
+
+<h1>Dades longitud </h1>
+<p>Longitud minima</p>
+<input type="number" step="0.00001" id="longitudMin" [(ngModel)]="longitudMin" class="form-control" required>
+<p>Longitud maxima</p>
+<input type="number" step="0.00001" id="longitudMax" [(ngModel)]="longitudMax" class="form-control" required>
+<br>
+<button type="button" (click)="obtenirPunts()">Obtenir nous punts interes</button>
+
+<br>
+
+<h1>Punts d'interes per:</h1>
+<h2>Latitud: {{this.latitudMin}} - {{this.latitudMax}}</h2>
+<h2>Longitud: {{this.longitudMin}} - {{this.longitudMax}}</h2>
+
+<br>
+
+<p>Punts d'interes: </p>
+<select [(ngModel)]="coordenadasSeleccionadas">
+    <option *ngFor="let punt of puntsInteres" [ngValue]="{ lat: punt.point.lat, lon: punt.point.lon }">{{punt.name}}</option>
+</select>
+<button type="button" (click)="obtenirElevacio()">Obtenir dades elevacio</button>
+
+<br>
+
+<h3>Altura sobre el nivell del mar: {{this.mar}}</h3>
