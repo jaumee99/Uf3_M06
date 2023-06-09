@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { FormulariComponent } from './projecte/components/formulari/formulari.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PuntsInteresComponent } from './projecte/components/punts-interes/punts-interes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormulariComponent
+    FormulariComponent,
+    PuntsInteresComponent
   ],
   imports: [
     BrowserModule,

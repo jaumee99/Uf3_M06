@@ -18,8 +18,21 @@ export class ApiService {
     return this.http.get(this.opentripmapUrl+'/en/places/bbox?lon_min='+longitudMin+'&lon_max='+longitudMax+'&lat_min='+latitudMin+'&lat_max='+latitudMax+'&format=json&apikey='+this.opentripmapKey);
   }
 
+  getPuntsInteres(longitudMin: number, longitudMax: number, latitudMin: number, latitudMax: number, kinds: string, rate: string) {
+    return this.http.get(this.opentripmapUrl+'/en/places/bbox?lon_min='+longitudMin+'&lon_max='+longitudMax+'&lat_min='+latitudMin+'&lat_max='+latitudMax+'&kinds='+kinds+'&rate='+rate+'&format=json&apikey='+this.opentripmapKey);
+  }
+
   getElevacio(latitud: number, longitud: number) {
     return this.http.get(this.bingmapUrl+'/Elevation/List?points='+latitud+','+longitud+'&key='+this.bingmapKey);
   }
 
+  getImatge(latitud: number, longitud: number, tipoVista: string) {
+    const baseUrl = 'https://dev.virtualearth.net/REST/v1/Imagery/Map/';
+    const mapStyle = tipoVista === 'Aerial' ? 'AerialWithLabels' : tipoVista;
+  
+    const url = `${baseUrl}${mapStyle}?pp=${latitud},${longitud}&key=${this.bingmapKey}`;
+    console.log(url);
+    return this.http.get(url, { responseType: 'blob' });
+  }
+  
 }

@@ -23,10 +23,26 @@
 
 <p>Punts d'interes: </p>
 <select [(ngModel)]="coordenadasSeleccionadas">
-    <option *ngFor="let punt of puntsInteres" [ngValue]="{ lat: punt.point.lat, lon: punt.point.lon }">{{punt.name}}</option>
+    <option *ngFor="let punt of puntsInteres" [ngValue]="{ lat: punt.point.lat, lon: punt.point.lon }">{{punt.name}}
+    </option>
 </select>
+<br>
 <button type="button" (click)="obtenirElevacio()">Obtenir dades elevacio</button>
 
 <br>
 
 <h3>Altura sobre el nivell del mar: {{this.mar}}</h3>
+<img [src]="brandLogoUri" alt="Powered by Virtual Earth" *ngIf="brandLogoUri">
+<p>{{ dretsAutor }}</p>
+<br>
+
+<img [src]="imatge" alt="Imatge de Bing Maps">
+
+<select [(ngModel)]="tipoVista" (change)="obtenirImatge()">
+    <option value="Aerial">Aerial</option>
+    <option value="AerialWithLabels">Aerial With Labels</option>
+    <option value="CanvasDark">CanvasDark</option>
+    <option value="CanvasLight">CanvasLight</option>
+    <option value="CanvasGray">CanvasGray</option>
+    <option value="Road">Road</option>
+</select>

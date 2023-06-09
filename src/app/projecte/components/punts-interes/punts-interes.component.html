@@ -1,0 +1,41 @@
+<h3>Dades latitud </h3>
+<p>Minima</p>
+<input type="number" step="0.00001" id="latitudMin" [(ngModel)]="latitudMin" class="form-control" required>
+<p>Maxima</p>
+<input type="number" step="0.00001" id="latitudMax" [(ngModel)]="latitudMax" class="form-control" required>
+
+<h3>Dades longitud </h3>
+<p>Longitud minima</p>
+<input type="number" step="0.00001" id="longitudMin" [(ngModel)]="longitudMin" class="form-control" required>
+<p>Longitud maxima</p>
+<input type="number" step="0.00001" id="longitudMax" [(ngModel)]="longitudMax" class="form-control" required>
+<p>Categoria</p>
+<a href="https://opentripmap.io/catalog">Categories disponibles</a>
+<br>
+<input type="text" id="kinds" [(ngModel)]="kinds" class="form-control">
+<br>
+<p>Valoracio</p>
+<a>Opcions: 1, 2, 3, 1h, 2h, 3h</a>
+<br>
+<input type="text" id="rate" [(ngModel)]="rate" class="form-control">
+<br>
+<button type="button" (click)="obtenirPunts()">Obtenir nous punts interes</button>
+
+<br>
+<h3>Punts d'interes: </h3>
+<select [(ngModel)]="coordenadasSeleccionadas">
+    <option *ngFor="let punt of puntsInteres" [ngValue]="punt.xid">{{punt.name}}</option>
+</select>
+<br>
+<button type="button" (click)="obtenirDadesSeleccionat()">Obtenir dades seleccionat</button>
+
+<h2>Punt d'interes seleccionat:</h2>
+<p>Latitud: {{ coordenadasSeleccionadas.lat }}</p>
+<p>Longitud: {{ coordenadasSeleccionadas.lon }}</p>
+<p>Nom: {{ nombreSeleccionado }}</p>
+<p>Categories: {{ categoriasSeleccionadas }}</p>
+<p>Valoracio: {{ valoracionSeleccionada }}</p>
+
+
+<img [src]="brandLogoUri" alt="Powered by Virtual Earth" *ngIf="brandLogoUri">
+<p>{{ dretsAutor }}</p>
